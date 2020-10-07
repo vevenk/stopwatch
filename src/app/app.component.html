@@ -1,11 +1,5 @@
 <h1>Stopwatches</h1>
 <div>
-  <app-stopwatch
-    *ngFor="let iterStopwatch of stopwatches; let idx = index"
-    [stopwatch]="iterStopwatch"
-    [index]="idx + 1"
-  ></app-stopwatch>
-
-  <button (click)="addStopwatch()">Add new</button>
-
+  <app-stopwatch></app-stopwatch>
+  <button (click)="stopwatchesService.addStopwatch()">Add new</button>
 </div>

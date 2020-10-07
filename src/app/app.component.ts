@@ -1,21 +1,13 @@
 import {Component} from '@angular/core';
-
-export interface Stopwatch {
-  title: string;
-}
+import {StopwatchesService} from './shared/stopwatches.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
-
-  stopwatches: Stopwatch[] = [
-    {title: 'Stopwatch '}
-  ];
-
-  addStopwatch(): void {
-    this.stopwatches.push({title: 'Stopwatch '});
+  constructor(public stopwatchesService: StopwatchesService) {
   }
 }
