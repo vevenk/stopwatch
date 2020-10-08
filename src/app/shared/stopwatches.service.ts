@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {TimeFilterPipe} from './time-filter.pipe';
 
 export interface Stopwatch {
   id: number;
@@ -11,6 +12,9 @@ export interface Stopwatch {
 @Injectable({providedIn: 'root'})
 
 export class StopwatchesService {
+
+  constructor(private timeFilter: TimeFilterPipe) {
+  }
 
   public stopwatches: Stopwatch[] = [
     {id: 0, title: 'Stopwatch ', time: 0, toggle: false, interval: 0}
@@ -27,7 +31,7 @@ export class StopwatchesService {
         item.toggle = true;
         item.interval = setInterval(() => {
           item.time++;
-        }, 1000);
+        }, 10);
       } else {
         clearInterval(item.interval);
         item.toggle = false;
@@ -38,5 +42,15 @@ export class StopwatchesService {
   stopStopwatch(id: number): void {
     clearInterval(this.stopwatches[id].interval);
     this.stopwatches[id].toggle = false;
+  }
+
+  showSummaryTime(): void {
+    let sumTime = 0;
+    for (const item of this.stopwatches) {
+      clearInterval(item.interval);
+      item.toggle = false;
+      sumTime += item.time;
+    }
+    alert(this.timeFilter.transform(sumTime));
   }
 }
