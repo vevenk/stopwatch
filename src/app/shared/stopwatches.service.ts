@@ -51,6 +51,6 @@ export class StopwatchesService {
       item.toggle = false;
       sumTime += item.time;
     }
-    alert(this.timeFilter.transform(sumTime));
+    alert('Total amount of time: ' + this.timeFilter.transform(sumTime));
   }
 }

@@ -1,10 +1,9 @@
 <div class="stopwatch"
      *ngFor="let stopwatch of stopwatchesService.stopwatches; let idx = index">
   <h2>{{stopwatchesService.stopwatches[idx].title}}{{ idx + 1 }}</h2>
-  <p>{{stopwatchesService.stopwatches[idx].time | timeFilter}}
-    <button
-      (click)='stopwatchesService.stopwatches[idx].toggle ? stopwatchesService.stopStopwatch(idx) : stopwatchesService.startStopwatch(idx)'>
-      {{stopwatchesService.stopwatches[idx].toggle ? 'Stop' : 'Start'}}
-    </button>
-  </p>
+  <p>{{stopwatchesService.stopwatches[idx].time | timeFilter}}</p>
+  <button
+    (click)='stopwatchesService.stopwatches[idx].toggle ? stopwatchesService.stopStopwatch(idx) : stopwatchesService.startStopwatch(idx)'>
+    {{stopwatchesService.stopwatches[idx].toggle ? 'Stop' : 'Start'}}
+  </button>
 </div>
